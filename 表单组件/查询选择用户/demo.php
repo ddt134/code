@@ -12,7 +12,7 @@ function gcSelect($url){
 <script type="text/javascript">
     layui.use(['form', 'layedit', 'laydate'], function() {
         var form = layui.form, layer = layui.layer, layedit = layui.layedit, laydate = layui.laydate;
-        $('.select-btn').bind('click',function (){         
+        $('.select-btn').bind('click',function (){
             var title=$('.input-hide').data('title')?$('.input-hide').data('title'):'查询';
             layer.open({
                 title:title,
@@ -31,9 +31,11 @@ function gcSelect($url){
             $('.input-show').val('');
             $('.input-hide').val('');
         });
-       
+
     });
 </script>
 html;
 
 }
+
+$cSelect=gcSelect($this->createWebUrl('common',['tp'=>'storeinfo','to'=>'searchUser','sf'=>'name','hf'=>'id']));
