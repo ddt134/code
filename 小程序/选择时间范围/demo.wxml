@@ -1,0 +1,20 @@
+<view class="detailed">
+    <view class="hotel_name flex-center ">
+        <view class="total">起始时间：</view>
+        <picker mode="multiSelector" value="{{dateTime}}" bindchange="changeDateTime" bindcolumnchange="changeDateTimeColumn"
+                range="{{dateTimeArray}}" data-name="startTime">
+            <view class="input">
+                <input name="startTime" value="{{startTime}}"/>
+            </view>
+        </picker>
+    </view>
+    <view class="hotel_name flex-center ">
+        <view class="total">结束时间：</view>
+        <picker mode="multiSelector" value="{{dateTime}}" bindchange="changeDateTime" bindcolumnchange="changeDateTimeColumn"
+                range="{{dateTimeArray}}" data-name="endTime">
+            <view class="input">
+                <input name="endTime" value="{{endTime}}"/>
+            </view>
+        </picker>
+    </view>
+</view>
