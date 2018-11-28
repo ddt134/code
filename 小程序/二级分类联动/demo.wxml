@@ -1,0 +1,12 @@
+<view class="detailed">
+    <view class="hotel_name flex-center ">
+        <view class="total">选择分类：</view>
+        <picker mode="multiSelector" value="{{multiIndex}}" bindchange="multiPickerChange" bindcolumnchange="multiPickerColumnChange"
+                range="{{cateRange}}" range-key="cat_name" data-range="cateRange" data-index="multiIndex">
+            <view class="input">
+                <input value="{{cateRange[0][multiIndex[0]]['cat_name']}}-{{cateRange[1][multiIndex[1]]['cat_name']}}"/>
+                <input name="cateIds" value="{{cateRange[0][multiIndex[0]]['id']}},{{cateRange[1][multiIndex[1]]['id']}}" hidden="1"/>
+            </view>
+        </picker>
+    </view>
+</view>
