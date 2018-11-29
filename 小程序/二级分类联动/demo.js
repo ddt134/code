@@ -30,9 +30,10 @@ Page({
         var range=e.currentTarget.dataset.range;
         var index=e.currentTarget.dataset.index;
         var data={};
-        data[index]=page.data[index];
+        data[index]=page.data[index].concat();//删除引用
         data[index][e.detail.column]=e.detail.value;
         if(e.detail.column==0){
+            data[index][1]=0;
             page.data[range][1]=page.data[range][0][e.detail.value]['children'].concat();//删除引用
             page.data[range][1].unshift({id:0, cat_name: "全部分类",children:[]});
             data[range]=page.data[range];
