@@ -1,0 +1,10 @@
+<view class="hotel_name flex-center ">
+    <view class="total">选择商家：</view>
+    <picker mode="selector" value="{{storeIndex}}" bindchange="pickerChange"
+            range="{{storeRange}}" range-key="store_name" data-index="storeIndex">
+        <view class="input">
+            <input value="{{storeRange[storeIndex]['store_name']}}"/>
+            <input name="storeId" value="{{storeRange[storeIndex]['id']}}" hidden="1"/>
+        </view>
+    </picker>
+</view>

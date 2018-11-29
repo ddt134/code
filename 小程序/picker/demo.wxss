@@ -1,0 +1,45 @@
+.detailed {
+    width: 100%;
+    height: auto;
+    margin-top: 20rpx;
+}
+.hotel_name {
+    width: 95%;
+    height: 80rpx;
+    margin: 0 auto;
+    background: #fff;
+}
+
+.hotel_name:last-child {
+    border: none;
+}
+
+.hotel_name .total {
+    width: 160rpx;
+    height: 100%;
+    line-height: 80rpx;
+    font-size: 26rpx;
+    margin-left: 30rpx;
+    color: #333;
+}
+
+.hotel_name .input {
+    width: 500rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    font-size: 26rpx;
+    color: #333;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.hotel_name .input input {
+    width: 100%;
+    height: 100%;
+}
+
+.hotel_name .input text {
+    color: #777;
+    margin-right: 10rpx;
+}
