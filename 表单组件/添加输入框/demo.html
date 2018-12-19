@@ -1,0 +1,69 @@
+<link rel="stylesheet" href="/css/bootstrap.min.css"  media="all">
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/jquery.min.js"></script>
+
+<div class="form-group">
+    <label class="col-sm-2 control-label">阶梯价格</label>
+    <div class="col-sm-10">
+        <a class="btn btn-primary" id="jtjg-btn">+</a>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var jtjg=JSON.parse('<?php echo empty($info["tiered_price"])?"{}":$info["tiered_price"];?>');
+    var jtjgTpl='<div class="col-sm-10 input-group">' +
+        '<div class="input-group-addon">参与人数>=</div>\n' +
+        '\t\t\t\t\t\t\t\t<input type="text" class="form-control" name="number" value="">\n' +
+        '\t\t\t\t\t\t\t\t<div class="input-group-addon">价格</div>\n' +
+        '\t\t\t\t\t\t\t\t<input type="text" class="form-control" name="price" value="">' +
+        '<a class="btn btn-default input-group-addon">-</a>' +
+        '</div>';
+    initFlow($('#jtjg-btn'),'jtjg',jtjgTpl,jtjg);
+    function initFlow(addBtn,prefix,itemTpl,data){
+        var container=addBtn.parent();
+        container.append(genereateWrap(prefix));
+        var wrap=container.find('.'+prefix+'-wrap');
+        for(var i in data){
+            initItem(wrap,prefix,itemTpl,i,data[i]);
+        }
+        addBtn.bind('click',{wrap:wrap,prefix:prefix,itemTpl:itemTpl},addItem);
+    }
+
+    function genereateWrap(prefix){
+        return '<div class="col-sm-12 '+prefix+'-wrap"  style="margin-top:5px"></div>'
+    }
+
+    function generateId(sn){
+        var timestamp=new Date().getTime();
+        return timestamp+'-'+sn;
+    }
+
+    function initItem(wrap,prefix,itemTpl,id,itemData){
+        wrap.append(itemTpl);
+        var item=wrap.children('div:last');
+        item.attr('id',id);
+        item.css('margin-top',5);
+        var input=item.find('input');
+        $.each(input,function (){
+            var name=$(this).attr('name');
+            var value=itemData[name]?itemData[name]:'';
+            $(this).attr('name',prefix+'['+id+']['+name+']');
+            $(this).val(value);
+        });
+        var delBtn=item.children('a:last');
+        delBtn.bind('click',removeItem);
+        return item;
+    }
+
+    function addItem(e){
+        var wrap=e.data.wrap;
+        var itemTpl=e.data.itemTpl;
+        var prefix=e.data.prefix;
+        initItem(wrap,prefix,itemTpl,generateId(1),{});
+    }
+
+    function removeItem(){
+        $(this).parent().remove();
+    }
+
+</script>
